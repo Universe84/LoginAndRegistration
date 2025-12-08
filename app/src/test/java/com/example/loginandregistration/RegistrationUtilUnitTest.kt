@@ -35,5 +35,49 @@ class RegistrationUtilUnitTest {
         assertThat(matchingPassword).isTrue()
     }
 
+    fun validateName_emptyName_isFalse() {
+        val emptyName = RegistrationUtil.validateName("")
+        assertThat(emptyName).isFalse()
+    }
+
+    fun validateName_isGood_isTrue() {
+        val isGood = RegistrationUtil.validateName("Alex")
+    }
+
+    fun validateUserName_emptyUser_isFalse(){
+        val emptyUser = RegistrationUtil.validateUsername("")
+        assertThat(emptyUser).isFalse()
+    }
+
+    fun validateUserName_matchesOther_isFalse(){
+        val matchesOther = RegistrationUtil.validateUsername("alice")
+        assertThat(matchesOther).isFalse()
+    }
+
+    fun validateUserName_tooShort_isFalse(){
+        val tooShort = RegistrationUtil.validateUsername("bo")
+        assertThat(tooShort).isFalse()
+    }
+
+    fun validateUserName_isGood_isTrue(){
+        val isGood = RegistrationUtil.validateUsername("Universe84")
+        assertThat(isGood).isTrue()
+    }
+
+    fun validateEmail_isEmpty_isFalse(){
+        val isEmpty = RegistrationUtil.validateEmail("")
+        assertThat(isEmpty).isFalse()
+    }
+
+    fun validateEmail_matchesOther_isFalse(){
+        val matchesOther = RegistrationUtil.validateEmail("jerry@gmail.com")
+        assertThat(matchesOther).isFalse()
+    }
+
+    fun validateEmail_notFormat_isFalse(){
+        val missingUser = RegistrationUtil.validateEmail("@banana.com")
+        assertThat(missingUser).isFalse()
+    }
+
 
 }
