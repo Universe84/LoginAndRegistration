@@ -4,7 +4,7 @@ object RegistrationUtil {
     // object keyword makes it so all the functions are
     // static functions
     // use this in the test class for the is username taken test
-    // make another similar list for some taken emails
+    // make another similar list for some taken email   epf wef23`s
         var existingEmails = listOf("itusi@yahoo.com", "jerry@gmail.com", "daxton@stu.spusd.net", "alex@hotmail.com")
         var existingUsers = listOf("cosmicF", "cosmicY", "bob", "alice")
     //    you can use listOf<type>() instead of making the list & adding individually
