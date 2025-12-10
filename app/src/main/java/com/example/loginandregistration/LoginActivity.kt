@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
-        binding.buttonLoginLogin.setOnClickListener {
+        binding.textViewLoginSignup.setOnClickListener {
             val username = binding.editTextLoginUsername.text.toString()
             val password = binding.editTextLoginPassword.text.toString()
 
@@ -37,6 +37,8 @@ class LoginActivity : AppCompatActivity() {
 
             registrationIntent.putExtra(EXTRA_USERNAME, username)
             registrationIntent.putExtra(EXTRA_PASSWORD, password)
+
+            startActivity(registrationIntent)
         }
     }
 }

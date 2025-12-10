@@ -79,6 +79,10 @@ class RegistrationUtilUnitTest {
         assertThat(missingUser).isFalse()
     }
 
+    fun validateEmail_containsAt_isFalse(){
+        val noAt = RegistrationUtil.validateEmail("applebanana.com")
+        assertThat(noAt).isFalse()
+    }
 
 
 }

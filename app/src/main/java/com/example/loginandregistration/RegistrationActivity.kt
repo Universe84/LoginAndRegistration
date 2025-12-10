@@ -21,5 +21,11 @@ class RegistrationActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val username = intent.getStringExtra(LoginActivity.EXTRA_USERNAME) ?: ""
+        val password = intent.getStringExtra(LoginActivity.EXTRA_PASSWORD) ?: ""
+
+        binding.editTextRegistrationUsername.setText(username)
+        binding.editTextTextPassword.setText(password)
+
     }
 }

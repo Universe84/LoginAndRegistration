@@ -27,19 +27,18 @@ object RegistrationUtil {
     // both passwords match
     // not empty
     fun validatePassword(password : String, confirmPassword: String) : Boolean {
-        return (password.equals(confirmPassword) && password.length > 7 && password.any{it.isUpperCase()} && password.any{it.isDigit()})
+        return (password == confirmPassword && password.length > 7 && password.any{it.isUpperCase()} && password.any{it.isDigit()})
     }
 
     // isn't empty
     fun validateName(name: String) : Boolean {
-        return name.length > 0
+        return name.isNotEmpty()
     }
 
     // isn't empty
     // make sure the email isn't used
     // make sure it's in the proper email format user@domain.tld
     fun validateEmail(email: String) : Boolean {
-        return email.length > 0 && !existingEmails.contains(email) && email.contains("@") && email.contains(".") && email.substring(0, email.indexOf("@")).length > 0 && email.substring(email.indexOf("@"), email.indexOf(".")).length > 0 && email.substring(email.indexOf("."), email.length).length > 0)
+        return email.isNotEmpty() && !existingEmails.contains(email) && email.contains("@") && email.contains(".") && email.substring(0, email.indexOf("@")).isNotEmpty() && email.substring(email.indexOf("@"), email.indexOf(".")).isNotEmpty() && email.substring(email.indexOf("."), email.length).isNotEmpty()
     }
-}
 }
