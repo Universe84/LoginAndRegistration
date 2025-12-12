@@ -1,13 +1,16 @@
 package com.example.loginandregistration
 
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.loginandregistration.databinding.ActivityLoginBinding
+import androidx.activity.result.ActivityResult
 
 class LoginActivity : AppCompatActivity() {
 
@@ -15,6 +18,15 @@ class LoginActivity : AppCompatActivity() {
         val EXTRA_USERNAME = "username"
         val EXTRA_PASSWORD = "password"
         val TAG = "LoginActivity"
+    }
+
+    val startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val intent = result.data
+
+            binding.editTextLoginUsername.setText(intent?.getStringExtra(EXTRA_USERNAME))
+            binding.editTextLoginPassword.setText(intent?.getStringExtra(EXTRA_PASSWORD))
+        }
     }
     private lateinit var binding: ActivityLoginBinding
 
@@ -38,7 +50,9 @@ class LoginActivity : AppCompatActivity() {
             registrationIntent.putExtra(EXTRA_USERNAME, username)
             registrationIntent.putExtra(EXTRA_PASSWORD, password)
 
-            startActivity(registrationIntent)
+            //startActivity(registrationIntent)
+
+            startForResult.launch(registrationIntent)
         }
     }
 }

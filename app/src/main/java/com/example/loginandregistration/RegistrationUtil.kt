@@ -39,6 +39,6 @@ object RegistrationUtil {
     // make sure the email isn't used
     // make sure it's in the proper email format user@domain.tld
     fun validateEmail(email: String) : Boolean {
-        return email.isNotEmpty() && !existingEmails.contains(email) && email.contains("@") && email.contains(".") && email.substring(0, email.indexOf("@")).isNotEmpty() && email.substring(email.indexOf("@"), email.indexOf(".")).isNotEmpty() && email.substring(email.indexOf("."), email.length).isNotEmpty()
+        return email.isNotEmpty() && !existingEmails.contains(email) && email.contains("@") && email.contains(".") && email.substring(0, email.indexOf("@")).isNotEmpty() && email.substring(email.indexOf("@") + 1, email.indexOf(".")).isNotEmpty() && email.substring(email.indexOf(".") + 1, email.length).isNotEmpty()
     }
 }
